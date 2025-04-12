@@ -23,7 +23,7 @@ class Autore(models.Model):
 
     def __str__(self):
         #Defines representation string in admin panel
-        return ' - '.join([self.cognome, self.nome]) if self.nome
+        return ' - '.join([self.cognome, self.nome])
 
     class Meta:
         verbose_name = 'Autore'
