@@ -53,10 +53,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "Biblioteca.urls"
 
+# Templates
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ['templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -145,4 +146,4 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
 
 # CSRF failure view
-CSRF_FAILURE_VIEW='gestione.views.csrf_failure'
+# CSRF_FAILURE_VIEW='gestione.views.csrf_failure'
