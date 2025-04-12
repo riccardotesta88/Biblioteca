@@ -83,10 +83,12 @@ POSTGRES_PASSWORD= getenv("POSTGRES_PASSWORD")
 POSTGRES_DB = getenv("POSTGRES_DB")
 
 DATABASES = {
+    # Local DB for development adn testing
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     },
+    # Production DB
     "postgres": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": POSTGRES_DB,
@@ -138,3 +140,9 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_URL='/media/'
+
+# CSRF failure view
+CSRF_FAILURE_VIEW='gestione.views.csrf_failure'
