@@ -14,10 +14,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from Biblioteca import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-]
+    # Gestione percorsi per la gestione dei libri che rimanda al modulo gestione\urls.py
+    path("", include("gestione.urls")),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
