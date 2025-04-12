@@ -20,8 +20,10 @@ from django.urls import path, include
 
 from Biblioteca import settings
 
-urlpatterns = [
+urlpatterns = (([
     path("admin/", admin.site.urls),
     # Gestione percorsi per la gestione dei libri che rimanda al modulo gestione\urls.py
     path("", include("gestione.urls")),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+               + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
+               + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT))
