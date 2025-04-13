@@ -3,10 +3,16 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<h2>Log In</h2>
+
+    <div class="p-3">
+    <hi>Applicazione Biblioteca</hi>
+        <p>Per utilizzare l'applicazione cliccare sul pulsante "Log In" del menu di navigazione.-</p>
 <form method="post">
   {% csrf_token %}
   {{ form }}
   <button type="submit">Log In</button>
 </form>
+    </div>
+
+
 {% endblock %}
