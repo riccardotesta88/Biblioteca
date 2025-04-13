@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-_p03bv1-g^a-i78kgzt_)m82%4@_1aj+&gaq@mkfs4#=sg!249
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 
 
@@ -57,7 +57,7 @@ ROOT_URLCONF = "Biblioteca.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ['templates'],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -145,6 +145,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
+
+LOGIN_REDIRECT_URL = "/"
 
 # CSRF failure view
 # CSRF_FAILURE_VIEW='gestione.views.csrf_failure'
