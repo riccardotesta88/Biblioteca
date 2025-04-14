@@ -1,6 +1,14 @@
 from django.contrib import admin
-import gestione.models as mod
+
+from gestione.models import *
+from phonenumber_field.widgets import PhoneNumberPrefixWidget
+
+
 # Register your models here.
-admin.site.register(mod.Libro)
-admin.site.register(mod.Autore)
-admin.site.register(mod.Editore)
+# @admin.register(Autore, Libro, Editore)
+class LibroAdmin(admin.ModelAdmin):
+
+    pass
+admin.site.register(Libro,LibroAdmin)
+admin.site.register(Autore)
+admin.site.register(Editore)
