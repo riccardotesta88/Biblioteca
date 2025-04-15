@@ -12,6 +12,8 @@ Applicazione web per la gestione dei libri sviluppata in Django e su ambiente Do
 - Base di dati: ***PostgreSQL***, ***Redis***
 - Backend: ***Django***, ***Django Rest Framework*** (evntualmente per la gestione delle API), ***Docker***
 - Frontend: ***HTML***, ***CSS***, ***Javascript***, ***Bootstrap***, ***DataTables***
+- Gestione dei campi telefono: https://django-phonenumber-field.readthedocs.io/
+---
 
 #### Struttura del progetto
 - **gestione**: Applicazione Django per la gestione dei libri, autori e editori
