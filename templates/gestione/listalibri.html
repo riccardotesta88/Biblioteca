@@ -4,8 +4,15 @@
     <h3>Aggiungi un libro</h3>
     <form action="" method="post" novalidate>
         {% csrf_token %}
-        {{ formLibro.as_table }}
-        <input type="submit" value="Aggiungi">
+
+        {% for field in formLibro %}
+        <div class="form-group">
+            {{ form.subject.errors }}
+            <label for="{{ field.id_for_label }}">{{ field.label_tag}}</label>
+            {{ field }}
+        </div>
+    {% endfor %}
+             <input type="submit" value="Aggiungi">
     </form>
     {#    Aggingi Editore#}
     <h3>Aggiungi un Editore</h3>
@@ -29,15 +36,34 @@
         {#            <p>{{ key}}: {{ value }}</p>#}
         {#        {% endfor %}#}
     {% else %}
+        <p>Libro non creato</p>
 
     {% endif %}
+
 {% endblock %}
 {% block listalibri %}
-
+<hr>
     <h2>Lista dei libri disponibili</h2>
-    <hr>
+
+    <table class="table" id="result">
+    <thead>
+    <th>titolo</th>
+    <th>autore</th>
+    <th>editore</th>
+    <th>anno</th>
+
     {% for libro in libri %}
-        <p>{{ libro.titolo }} - {{ libro.autore }} - {{ libro.editore }} - {{ libro.anno }}</p>
+        <tr>
+        <td>{{ libro.titolo }}</td>
+        <td>{{ libro.autore }}</td>
+        <td>{{ libro.editore }}</td>
+        <td>{{ libro.anno }}</td></tr>
     {% endfor %}
+    </thead>
+    </table>
+    <script type="text/javascript">
+    let table = new DataTable('#result');
+
+    </script>
 
 {% endblock %}
