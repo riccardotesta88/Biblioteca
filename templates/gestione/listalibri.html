@@ -2,7 +2,7 @@
 {% block addbook %}
 {#    #Aggiungi Libro#}
     <h3>Aggiungi un libro</h3>
-    <form action="" method="post" novalidate>
+    <form action="gestione/addlibro/" method="post" novalidate>
         {% csrf_token %}
 
         {% for field in formLibro %}
@@ -16,7 +16,7 @@
     </form>
     {#    Aggingi Editore#}
     <h3>Aggiungi un Editore</h3>
-    <form action="" method="post" novalidate>
+    <form action="gestione/addeditore/" method="post" novalidate>
         {% csrf_token %}
         {{ formEditore.as_table }}
         <input type="submit" value="Aggiungi">
@@ -24,7 +24,7 @@
 
     {#    Aggiungi Autore#}
     <h3>Aggiungi un Autore</h3>
-    <form action="" method="post" novalidate>
+    <form action="gestione/addautore/" method="post" novalidate>
         {% csrf_token %}
         {{ formAutore.as_table }}
         <input type="submit" value="Aggiungi">
