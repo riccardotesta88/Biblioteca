@@ -1,69 +1,102 @@
 {% extends "home.html" %}
 {% block addbook %}
-{#    #Aggiungi Libro#}
-    <h3>Aggiungi un libro</h3>
-    <form action="gestione/addlibro/" method="post" novalidate>
-        {% csrf_token %}
+    {#    #Aggiungi Libro#}
+    <div class="card p-3">
+        <div class="p-2 card-header-tabs"><h3>Aggiungi un libro</h3></div>
 
-        {% for field in formLibro %}
-        <div class="form-group">
-            {{ form.subject.errors }}
-            <label for="{{ field.id_for_label }}">{{ field.label_tag}}</label>
-            {{ field }}
-        </div>
-    {% endfor %}
-             <input type="submit" value="Aggiungi">
-    </form>
+        <form action="{% url 'add_libro' %}" method="post" novalidate>
+            {% csrf_token %}
+            <div class="row">
+                {% for field in formLibro %}
+                    <div class="col-md-4 p-2">
+                        {{ form.subject.errors }}
+                        <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+
+                        {{ field }}
+                        <br><span class="alert-warning">{{ field.help_text }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+            <input type="submit" value="Aggiungi">
+        </form>
+    </div>
     {#    Aggingi Editore#}
-    <h3>Aggiungi un Editore</h3>
-    <form action="gestione/addeditore/" method="post" novalidate>
-        {% csrf_token %}
-        {{ formEditore.as_table }}
-        <input type="submit" value="Aggiungi">
-    </form>
+    <div class="card p-3">
+        <div class="p-2 card-header-tabs"><h3>Aggiungi un Editore</h3></div>
+        <form action="{% url 'add_editore' %}" method="post" novalidate>
+            {% csrf_token %}
+            <div class="row">
+
+                {% for field in formEditore %}
+                    <div class="col-md-4 p-2">
+                        {{ form.subject.errors }}
+                        <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+                        {{ field }}
+                    <br><span class="alert-warning">{{ field.help_text }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+            <input type="submit" value="Aggiungi">
+        </form>
+    </div>
 
     {#    Aggiungi Autore#}
-    <h3>Aggiungi un Autore</h3>
-    <form action="gestione/addautore/" method="post" novalidate>
-        {% csrf_token %}
-        {{ formAutore.as_table }}
-        <input type="submit" value="Aggiungi">
-    </form>
+    <div class="card p-3">
+    <div class="p-2 card-header-tabs"><h3>Aggiungi un Autore</h3></div>
+       <form action="{% url 'add_autore' %}" method="post" novalidate>
+            {% csrf_token %}
+            <div class="row">
+
+                {% for field in formAutore %}
+                    <div class="col-md-4 p-2">
+                        {{ form.subject.errors }}
+                        <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+                        {{ field }}
+                    <br><span class="alert-warning">{{ field.help_text }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+            <input type="submit" value="Aggiungi">
+       </form></div>
+
+
+
+
+
     {% if libro %}
         <p>Libro creato in DB: id {{ libro.id }}</p>
         {{ libro }}
         {#        {% for  key,value in libro.items %}#}
         {#            <p>{{ key}}: {{ value }}</p>#}
         {#        {% endfor %}#}
-    {% else %}
-        <p>Libro non creato</p>
 
     {% endif %}
 
 {% endblock %}
 {% block listalibri %}
-<hr>
+    <hr>
     <h2>Lista dei libri disponibili</h2>
 
     <table class="table" id="result">
-    <thead>
-    <th>titolo</th>
-    <th>autore</th>
-    <th>editore</th>
-    <th>anno</th>
+        <thead>
+        <th>titolo</th>
+        <th>autore</th>
+        <th>editore</th>
+        <th>anno</th>
 
-    {% for libro in libri %}
-        <tr>
-        <td>{{ libro.titolo }}</td>
-        <td>{{ libro.autore }}</td>
-        <td>{{ libro.editore }}</td>
-        <td>{{ libro.anno }}</td></tr>
-    {% endfor %}
-    </thead>
+        {% for libro in libri %}
+            <tr>
+                <td>{{ libro.titolo }}</td>
+                {#        Estrazione relatori multipli#}
+                <td>{% for autor in libro.autore.all %}{{ autor }}{% endfor %}</td>
+                <td>{{ libro.editore }}</td>
+                <td>{{ libro.anno_edizione }}</td>
+            </tr>
+        {% endfor %}
+        </thead>
     </table>
     <script type="text/javascript">
-    let table = new DataTable('#result');
-
+        let table = new DataTable('#result');
     </script>
 
 {% endblock %}
