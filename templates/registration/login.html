@@ -4,14 +4,13 @@
 
 {% block content %}
 
-    <div class="p-3">
-    <hi>Applicazione Biblioteca</hi>
-        <p>Per utilizzare l'applicazione cliccare sul pulsante "Log In" del menu di navigazione.-</p>
-<form method="post">
-  {% csrf_token %}
-  {{ form }}
-  <button type="submit">Log In</button>
-</form>
+    <div class="coubtainer p-3">
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Log In</button>
+        </form>
     </div>
 
 

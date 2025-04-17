@@ -1,0 +1,10 @@
+{% extends "home.html" %}
+
+{% block listalibri %}
+    <h2>Lista dei libri disponibili</h2>
+    <hr>
+    {% for libro in libri %}
+    <p>{{ libro.titolo }} - {{ libro.autore }} - {{ libro.editore }} - {{ libro.anno}}</p>
+    {% endfor %}
+
+{% endblock %}

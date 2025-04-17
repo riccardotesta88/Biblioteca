@@ -19,6 +19,7 @@
             </div>
             <input type="submit" value="Aggiungi">
         </form>
+    <div class="alert-info">Se un autore o un editore non sono presenti nell'elenco precedente, aggiungerli con i form sottostanti</div>
     </div>
     {#    Aggingi Editore#}
     <div class="card p-3">
@@ -77,7 +78,7 @@
     <hr>
     <h2>Lista dei libri disponibili</h2>
 
-    <table class="table" id="result">
+    <table class="table table-striped" id="result">
         <thead>
         <th>titolo</th>
         <th>autore</th>
@@ -88,15 +89,33 @@
             <tr>
                 <td>{{ libro.titolo }}</td>
                 {#        Estrazione relatori multipli#}
-                <td>{% for autor in libro.autore.all %}{{ autor }}{% endfor %}</td>
+                <td>{{ libro.autore.all | join:' , '}}</td>
                 <td>{{ libro.editore }}</td>
                 <td>{{ libro.anno_edizione }}</td>
             </tr>
         {% endfor %}
         </thead>
     </table>
-    <script type="text/javascript">
-        let table = new DataTable('#result');
-    </script>
+
+
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+{#Parametri Data table#}
+    $(document).ready(function () {
+    $('#result').DataTable( {
+        "paging": true,
+        "searching": true,
+        "autoWidth": true,
+        "ordering": true,
+        "columnDefs": [
+            {"width": "250px", "targets": 0},
+            {"width": "250px", "targets": 1},
+        ],
+    }
+    );
+} );
+</script>
 
 {% endblock %}
