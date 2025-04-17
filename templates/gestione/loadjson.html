@@ -1,13 +1,17 @@
 {% extends "home.html" %}
 {% block title %}Load database{% endblock %}
 
-{% block content %}
+{% block content_inner %}
+    <hr>
     <h1>Import JSON Data</h1>
+    <p>Potete caricare la struttura dei dati in formato Json, secondo le indicazioni dei campi da modello dell'applicazione.<br><hr><br></p>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="file" name="json_file">
         <button type="submit">Import</button>
     </form>
-    {% if response %}{{ response }}
-    {% endif %}
+
+    {% if response %} <hr>{{ response }}
+
+    {% endif %}<hr>
 {% endblock %}
