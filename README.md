@@ -13,6 +13,7 @@ Applicazione web per la gestione dei libri sviluppata in Django e su ambiente Do
 - Backend: ***Django***, ***Django Rest Framework*** (evntualmente per la gestione delle API), ***Docker***
 - Frontend: ***HTML***, ***CSS***, ***Javascript***, ***Bootstrap***, ***DataTables***
 - Gestione dei campi telefono: https://django-phonenumber-field.readthedocs.io/
+- bootstrap5
 ---
 
 #### Struttura del progetto
@@ -52,4 +53,12 @@ Creazione untete per accesso al sistema di gestione:  admin / accesso1234
 ```
 python manage.py createsuperuser --username admin --email admin@localhost
 ```
+### API
+Per la gestione delle API di interazione con la basedi dati e secondo la struttura del modello informativo creato, si potrebbe usare per una gestione più completa il ***Django RESTFramework*** presente.
+https://www.django-rest-framework.org/
+
+L'alternativa è creare dei semplici endpoint sui resolver url che restituiscano i dati in formato json secondo le funzionalità richiesta nelle interazioni con la base dati.
+
+- /api/addbook
+- /api/getbooks
 
