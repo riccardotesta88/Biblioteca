@@ -21,15 +21,26 @@ from django.conf.urls.static import static
 
 from Biblioteca import settings
 import gestione.views as vi
+from django.views.generic.base import TemplateView
+from rest_framework import routers
 
+router = routers.DefaultRouter()
+router.register(r'getlibri', vi.LibriViewGet)
+router.register(r'setlibri', vi.LibriViewSet)
 urlpatterns = (([
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
+    path("", TemplateView.as_view(template_name="home.html"), name="home"),  # new
 
     # Gestione percorsi per la gestione dei libri che rimanda al modulo gestione\urls.py
     path('', include('gestione.urls')),
+    # API
+    path('api/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/',include(router.urls)),
 ]
                + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
                + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT))
+
+
 
 urlpatterns += staticfiles_urlpatterns()
