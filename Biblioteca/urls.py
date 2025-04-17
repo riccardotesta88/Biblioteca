@@ -14,6 +14,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from os.path import basename
+
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -25,8 +27,11 @@ from django.views.generic.base import TemplateView
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register(r'getlibri', vi.LibriViewGet)
-router.register(r'setlibri', vi.LibriViewSet)
+router.register(r'getlibri', vi.LibriViewGet,basename='getlibri')
+router.register(r'setlibro', vi.LibriViewSet,basename="setlibro")
+router.register(r'setautore', vi.AutoreViewSet,basename="setautore")
+router.register(r'seteditore', vi.EditoreViewSet,basename="seteditore")
+
 urlpatterns = (([
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
