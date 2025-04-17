@@ -1,0 +1,13 @@
+{% extends "home.html" %}
+{% block title %}Load database{% endblock %}
+
+{% block content %}
+    <h1>Import JSON Data</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="json_file">
+        <button type="submit">Import</button>
+    </form>
+    {% if response %}{{ response }}
+    {% endif %}
+{% endblock %}
