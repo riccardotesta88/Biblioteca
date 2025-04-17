@@ -54,11 +54,14 @@ Creazione untete per accesso al sistema di gestione:  admin / accesso1234
 python manage.py createsuperuser --username admin --email admin@localhost
 ```
 ### API
-Per la gestione delle API di interazione con la basedi dati e secondo la struttura del modello informativo creato, si potrebbe usare per una gestione più completa il ***Django RESTFramework*** presente.
+Per la gestione delle API di interazione con la basedi dati e secondo la struttura del modello informativo creato, si potrebbe usare per una gestione più completa il ***Django RESTFramework*** presente.<br><br>
 https://www.django-rest-framework.org/
+- pip install djangorestframework
+- /api/login/
 
-L'alternativa è creare dei semplici endpoint sui resolver url che restituiscano i dati in formato json secondo le funzionalità richiesta nelle interazioni con la base dati.
+L'alternativa è creare dei semplici endpoint sui resolver url che restituiscano i dati in formato json secondo le funzionalità richiesta nelle interazioni con la base dati. In progetti più strutturati si coniglia la prima opzione che permette una maggiore standardizzazione dei API stesse e delle integrazioni future.
 
-- /api/addbook
-- /api/getbooks
+- POST /api/addbook
+- POST /api/addbook/?[id_a,id_e]
+- GET /api/getbooks
 
