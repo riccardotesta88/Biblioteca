@@ -1,4 +1,8 @@
 django
 redis
 django-redis
+#django-phone-field
+django-phonenumber-field
 phonenumbers
+django-bootstrap-v5
+djangorestframework
