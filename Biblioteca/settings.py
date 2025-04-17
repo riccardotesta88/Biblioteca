@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-_p03bv1-g^a-i78kgzt_)m82%4@_1aj+&gaq@mkfs4#=sg!249
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = []
 
 
 
@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'gestione',
+    'bootstrap5',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -154,3 +157,8 @@ LOGOUT_REDIRECT_URL = "/"
 
 # CSRF failure view
 # CSRF_FAILURE_VIEW='gestione.views.csrf_failure'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
