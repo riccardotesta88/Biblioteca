@@ -6,7 +6,10 @@ Applicazione web per la gestione dei libri sviluppata in Django e su ambiente Do
 ### Ambiente di sviluppo
 - Utilizzato *** Docker *** per l'ambiente di sviluppo, con variabili d'ambiente per l'accesso al database e per il servizio di redis per la parte di database.
 - Anche se sembrerebbe eccessivo utilizzare Redis per la gestione della cache, è stato scelto per la sua semplicità di utilizzo e per la sua velocità di risposta, anche in previsione di un uso intensivo futuro delle API di ricerca.
-
+<br>
+- Cartella config con configurazioni per mysql
+- Potrebbe essere necessario se si decidesse di impostare un host locale, il ***mapping dell'ip 127.0.0.1 in /etc/hosts***.
+- Le variabili di ambiente indicate nel file docker devono essere passate al momento del compose del container.
 
 ### Stack tecnologico
 - Base di dati: ***PostgreSQL***, ***Redis***
@@ -61,7 +64,7 @@ https://www.django-rest-framework.org/
 
 L'alternativa è creare dei semplici endpoint sui resolver url che restituiscano i dati in formato json secondo le funzionalità richiesta nelle interazioni con la base dati. In progetti più strutturati si coniglia la prima opzione che permette una maggiore standardizzazione dei API stesse e delle integrazioni future.
 
-- POST /api/addbook
-- POST /api/addbook/?[id_a,id_e]
-- GET /api/getbooks
+
+
+
 
