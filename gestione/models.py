@@ -1,4 +1,6 @@
 import datetime
+
+from django.contrib.admin.utils import help_text_for_field
 from django.db.models import CharField
 from phonenumber_field.modelfields import PhoneNumberField
 from django.db import models
@@ -46,7 +48,7 @@ class Autore(models.Model):
 class Editore(models.Model):
     ragione_sociale = models.CharField(max_length=100, null=False, blank=False)
     indirizzo = models.CharField(max_length=100, null=True, blank=True, default=None)
-    telefono = PhoneNumberField(blank=True)
+    telefono = PhoneNumberField(blank=True, null=True, default=None, help_text="Inserisci il numero di telefono con prefisso internazionale" )
 
     def __str__(self):
         # Defines representation string in admin panel
