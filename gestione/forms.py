@@ -16,7 +16,7 @@ class LibroForm(forms.ModelForm):
         }
         widgets = {
             'autore': forms.CheckboxSelectMultiple(),
-            'editore': forms.CheckboxSelectMultiple(),
+            'editore': forms.Select(),
         }
 
 class EditoreForm(forms.ModelForm):
